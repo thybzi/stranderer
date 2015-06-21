@@ -1,0 +1,14 @@
+---
+title: На карте
+layout: default
+nav_item: map
+controller: map
+---
+<figure class="map"></figure>
+<div class="meta" style="display: none">
+{% for photo in site.posts %}
+    <span data-latitude="{{ photo.latitude }}" data-longitude="{{ photo.longitude }}" data-url="{{ photo.url }}" data-width="{{ photo.width }}" data-height="{{ photo.height }}" data-tiles="{{ site.data.settings.storage }}{{ photo.filename }}/">
+        {% include helpers/caption.html photo=photo %}
+    </span>
+{% endfor %}
+</div>

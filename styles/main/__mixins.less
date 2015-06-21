@@ -1,0 +1,284 @@
+// Визуальные эффекты CSS3 {{
+
+.border-radius(@value) {
+    //-moz-border-radius: @value;     // Firefox 1.0 - 3.x
+    //-webkit-border-radius: @value;  // Chrome 1 - 4, Safari 3.0 - 4.x
+    border-radius: @value;
+}
+
+
+.border-image(@value) {
+    //-moz-border-image: @value;      // Firefox 3.5 - 14
+    //-webkit-border-image: @value;   // Chrome 7 - 15, Safari 3.0 - 5.x
+    border-image: @value;
+    -o-border-image: @value;        // Opera 11.0 - 12.x
+}
+
+.border-image-simple(@image) {
+    .border-image(url(@image) 1 repeat);
+}
+
+
+.box-shadow(@value) {
+    //-moz-box-shadow: @value;        // Firefox 3.5 - 3.6
+    //-webkit-box-shadow: @value;     // Chrome 4 - 9, Safari 3.0 - 5.0
+    box-shadow: @value;
+}
+
+
+.transition(@value) {
+    -o-transition: @value;      // Opera 10.5 - 12.0
+    //-moz-transition: @value;    // Firefox 4.0 - 15
+    -webkit-transition: @value; // Chrome 1 - 25, Safari 3.0 - 6.0
+    transition: @value;
+}
+
+
+// Универсальный линейный градиент {{
+// @FIXME проверить, какие префиксы нужны для каких браузеров
+// Использование: см. примеры ниже
+
+// Вариант применения: значение целиком (нет поддержки Android 2.x, возможно также старых iOS)
+// .linear-gradient(top, #ec174f 0%, #c01240 95%, #900e30 100%;)    // значение целиком (в конце значения точка с запятой!)
+// .linear-gradient(45deg, #ec174f 0%, #c01240 95%, #900e30 100%;)  // значение целиком (в конце значения точка с запятой!)
+// .linear-gradient(~'top, #ec174f 0%, #c01240 95%, #900e30 100%')  // значение целиком (заэкранировано)
+.linear-gradient(@value) {
+    background-image: -webkit-linear-gradient(@value); // Chrome 10 - 25, Safari 5.1 - 6.x
+    //background-image:    -moz-linear-gradient(@value); // Firefox 3.6 - 15
+    //background-image:     -ms-linear-gradient(@value); // IE 10+ (работает и без префикса -ms-?)
+    background-image:      -o-linear-gradient(@value); // Opera 11.1 - 12.0
+    background-image:         linear-gradient(@value); // W3C
+}
+
+// Вариант применения: направление, цвет начала, цвет конца
+// .linear-gradient(top, #ec174f, #900e30)
+.linear-gradient(@direction, @color1, @color2) {
+    .linear-gradient(@direction, @color1, 0%, @color2, 100%);
+}
+
+// Вариант применения: направление, цвет 1, позиция 1, цвет 2, позиция 2[, цвет 3, позиция 3, цвет 4, позиция 4, цвет 5, позиция5]
+// - Параметр "Направление" может принимать значения ~'to bottom', ~'to right', 'top', 'left'
+// - Пар "цвет-значение" может быть от 2 до 5
+// .linear-gradient(~'to bottom', #ec174f, 0%, #c01240, 95%, #900e30, 100%);
+// .linear-gradient(left, #ec174f, 0%, #c01240, 95%, #900e30, 100%);
+.linear-gradient(@direction, @color1, @pos1, @color2, @pos2) {
+    @colorStops: @color1 @pos1, @color2 @pos2;
+    @colorStopsWkG: color-stop(@pos1, @color1), color-stop(@pos2, @color2);
+   .linear-gradient-direction(@direction, @colorStops, @colorStopsWkG);
+}
+.linear-gradient(@direction, @color1, @pos1, @color2, @pos2, @color3, @pos3) {
+    @colorStops: @color1 @pos1, @color2 @pos2, @color3 @pos3;
+    @colorStopsWkG: color-stop(@pos1, @color1), color-stop(@pos2, @color2), color-stop(@pos3, @color3);
+   .linear-gradient-direction(@direction, @colorStops, @colorStopsWkG);
+}
+.linear-gradient(@direction, @color1, @pos1, @color2, @pos2, @color3, @pos3, @color4, @pos4) {
+    @colorStops:    @color1 @pos1, @color2 @pos2, @color3 @pos3, @color4 @pos4;
+    @colorStopsWkG: color-stop(@pos1, @color1), color-stop(@pos2, @color2), color-stop(@pos3, @color3), color-stop(@pos4, @color4);
+   .linear-gradient-direction(@direction, @colorStops, @colorStopsWkG);
+}
+.linear-gradient(@direction, @color1, @pos1, @color2, @pos2, @color3, @pos3, @color4, @pos4, @color5, @pos5) {
+    @colorStops:    @color1 @pos1, @color2 @pos2, @color3 @pos3, @color4 @pos4, @color5 @pos5;
+    @colorStopsWkG: color-stop(@pos1, @color1), color-stop(@pos2, @color2), color-stop(@pos3, @color3), color-stop(@pos4, @color4), color-stop(@pos5, @color5);
+   .linear-gradient-direction(@direction, @colorStops, @colorStopsWkG);
+}
+
+// Вспомогательный миксин для отрисовки значений градиента для различных браузеров
+.linear-gradient-crossbrowser(@valueW3C, @valueVnd, @valueWkG) {
+    //background-image: -webkit-gradient(@valueWkG);        // Chrome 3 - 9, Safari 4.0 - 5.0
+    background-image: -webkit-linear-gradient(@valueVnd); // Chrome 10 - 25, Safari 5.1 - 6.x
+    //background-image:    -moz-linear-gradient(@valueVnd); // Firefox 3.6 - 15
+    //background-image:     -ms-linear-gradient(@valueVnd); // IE 10+ (работает и без префикса -ms-?)
+    background-image:      -o-linear-gradient(@valueVnd); // Opera 11.1 - 12.0
+    background-image:         linear-gradient(@valueW3C); // W3C
+}
+
+// Вспомогательный миксин для применения направления градиента
+.linear-gradient-direction(@direction, @colorStops, @colorStopsWkG) when (@direction = top), (@direction = ~'to bottom') {
+    @valueW3C: to bottom, @colorStops;
+    @valueVnd: top, @colorStops;
+    @valueWkG: linear, 0 0, 0 100%, @colorStopsWkG;
+    .linear-gradient-crossbrowser(@valueW3C, @valueVnd, @valueWkG);
+}
+.linear-gradient-direction(@direction, @colorStops, @colorStopsWebkitGr) when (@direction = left), (@direction = ~'to right') {
+    @valueW3C: to right, @colorStops;
+    @valueVnd: left, @colorStops;
+    @valueWkG: linear, 0 0, 100% 0, @colorStopsWkG;
+    .linear-gradient-crossbrowser(@valueW3C, @valueVnd, @valueWkG);
+}
+
+// }} Универсальный линейный градиент
+
+
+// }} Визуальные эффекты CSS3
+
+
+
+// Работа с размером блоков, обрезанием/скрытием текста, выделением и т.п. {{
+
+.break-word() {
+    word-wrap: break-word;
+    //word-break: break-all; // некрасиво рвёт любые слова  @TODO разобраться, как улучшить ситуацию
+}
+
+
+.box-sizing(@value) {
+    -moz-box-sizing: @value;    // Firefox 2.0+ (на момент версии 24 всё ещё нужен)
+    -webkit-box-sizing: @value; // Chrome 1 - 9, Safari 3.1 - 5.0
+    box-sizing: @value;
+}
+
+
+.user-select-none() {
+    -moz-user-select: none;     // Firefox 1.5+ (на момент версии 24 всё ещё нужен)
+    -webkit-user-select: none;  // Chrome 1+, Safari 3.1+ (на момент версий 30 и 7.0 всё ещё нужен)
+    -ms-user-select: none;      // IE 10+ (на момент версии 11 всё ещё нужен)
+    user-select: none;          // не используется (и нет в спецификации)
+}
+
+
+.hide-text() {
+    overflow: hidden;
+    text-indent: -10000px;
+    text-align: left !important;
+}
+
+
+.text-overflow-ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    //-o-text-overflow: ellipsis; // Opera 9.0 - 10.6
+    text-overflow: ellipsis;
+}
+
+.text-overflow-none() {
+    white-space: normal;
+    //-o-text-overflow: clip;         // Opera 9.0 - 10.6
+    text-overflow: clip;
+}
+
+// }} Работа с размером блоков, обрезанием/скрытием текста, выделением и т.п.
+
+
+
+// Расчёт позиции в спрайте {{
+
+// Расчёт background-position внутри спрайта (для квадратных иконок)
+//   @posX - позиция по горизонтали (начиная с 1)
+//   @posY - позиция по вертикали (начиная с 1)
+//   @size - размер "ячейки" спрайта
+.sprite-position(@posX, @posY, @size) {
+    background-position: (@size * -(@posX - 1)) (@size * -(@posY - 1));
+}
+
+// Расчёт background-position внутри спрайта (для НЕквадратных иконок)
+//   @posX - позиция по горизонтали (начиная с 1)
+//   @posY - позиция по вертикали (начиная с 1)
+//   @sizeX - горизонтальный размер "ячейки" спрайта
+//   @sizeY - вертикальный размер "ячейки" спрайта
+.sprite-position-nosquare(@posX, @posY, @sizeX, @sizeY) {
+    background-position: (@sizeX * -(@posX - 1)) (@sizeY * -(@posY - 1));
+}
+
+// }} Расчёт позиции в спрайте
+
+
+
+// CSS-треугольники на основе свойства border {{
+
+.border-triangle(@_, @size, @color) {
+    width: 0;
+    height: 0;
+    border: round(@size / 2) solid @color;
+}
+
+.border-triangle(left, ...) {
+    border-left-width: 0;
+}
+
+.border-triangle(right, ...) {
+    border-right-width: 0;
+}
+
+.border-triangle(top, ...) {
+    border-top-width: 0;
+}
+
+.border-triangle(bottom, ...) {
+    border-bottom-width: 0;
+}
+
+.border-triangle(@direction, ...) when (@direction = left), (@direction = right) {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.border-triangle(@direction, ...) when (@direction = top), (@direction = bottom) {
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+// )) CSS-треугольники на основе свойства border
+
+
+// Плейсхолдер для текстовых полей
+.placeholder-color(@color) {
+
+    .placeholder-style({
+        color: @color;
+        opacity: 1;
+    });
+
+//    &::-webkit-input-placeholder { // Chrome, Safari
+//        color: @color;
+//    }
+//
+//    &:-moz-placeholder { // Firefox 4 - 18
+//        color: @color;
+//        opacity: 1;
+//    }
+//
+//    &::-moz-placeholder { // Firefox 19+
+//        color: @color;
+//        opacity: 1;
+//    }
+//
+//    &:-ms-input-placeholder { // IE 10+
+//        color: @color;
+//    }
+}
+
+.placeholder-style(@style) {
+
+    &::-webkit-input-placeholder { // Chrome, Safari
+        @style();
+    }
+
+    &:-moz-placeholder { // Firefox 4 - 18
+        @style();
+    }
+
+    &::-moz-placeholder { // Firefox 19+
+        @style();
+    }
+
+    &:-ms-input-placeholder { // IE 10+
+        @style();
+    }
+}
+
+
+
+// Вспомогательные миксины {{
+
+.clearfix() {
+
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+// }} Вспомогательные миксины

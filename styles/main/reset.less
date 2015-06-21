@@ -1,0 +1,112 @@
+// Очищаем исходную стилизацию браузера для элементов
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+header, footer, nav, section, article, aside, figure, figcaption, mark,
+div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd,
+q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, br {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+cite, address {
+    font-style: normal;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote,
+q {
+    quotes: none;
+
+    &::before,
+    &::after {
+        content: '';
+        content: none;
+    }
+}
+
+:focus {
+    outline: 0;
+}
+
+a {
+    color: inherit;
+}
+
+a img {
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+// Отменяем тень в iOS, а также специальную стилизацию поискового инпута в Webkit-браузерах
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='search'] {
+    -webkit-appearance: none;
+}
+
+// Убираем крестик очистки поисковых инпутов
+input[type='search'] {
+
+    &::-webkit-search-cancel-button {
+        display: none;
+    }
+
+    &::-ms-clear {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    overflow: visible;
+    text-align: center;
+    white-space: nowrap;
+}
+
+// Убираем внутренний отступ у кнопки в Firefox
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+}

@@ -1,0 +1,26 @@
+---
+title: По годам
+layout: default
+nav_item: years
+controller: overviews
+---
+{% for photo in site.posts %}
+    {% assign currentyear = photo.date | date: "%Y" %}
+    {% if currentyear != year %}
+        {% unless forloop.first %}
+                </div>
+            </section>
+        {% endunless %}
+            <section class="overview">
+                <header class="year">
+                    <a href="/years/{{ currentyear }}/"><time>{{ currentyear }}</time></a>
+                </header>
+                <div class="gallery compact">
+        {% assign year = currentyear %}
+    {% endif %}
+    {% include gallery/item.html photo=photo %}
+    {% if forloop.last %}
+                </div>
+            </section>
+    {% endif %}
+{% endfor %}

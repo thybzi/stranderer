@@ -1,0 +1,19 @@
+---
+---
+[
+{% for photo in site.posts %}
+    {
+        "title": "{{ photo.title | escape }}",
+        "description": "{{ photo.description | escape }}",
+        "url": "{{ photo.url }}",
+        "width": {{ photo.width }},
+        "height": {{ photo.height }},
+        "width_units": {{ photo.width_units }},
+        "height_units": {{ photo.height_units }},
+        "tiles": "{{ site.data.settings.storage }}{{ photo.filename }}/",
+        "thumbnail": "{{ site.data.settings.storage }}{{ photo.filename }}_small.{{ photo.fileext }}",
+        "caption": {% capture caption %}{% include helpers/caption.html photo=photo %}{% endcapture %}"{{ caption | replace:"\"","&quot;" | strip_newlines }}"
+    }{% unless forloop.last %},
+{% endunless %}
+{% endfor %}
+]

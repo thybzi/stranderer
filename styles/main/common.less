@@ -1,0 +1,166 @@
+html,
+body {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    background-color: @white;
+    color: @black;
+    font: normal @text-font-size/@text-line-height @font-normal;
+}
+
+body > header {
+    @logo-height: 107px;
+
+    & {
+        position: relative;
+        z-index: @zindex-header;
+        height: @header-height;
+    }
+
+    .logo {
+        position: relative;
+        .box-sizing(border-box);
+        height: @logo-height;
+        padding-top: 32px;
+        text-align: center;
+        font-weight: 100;
+        font-size: 36px;
+        line-height: 40px;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+
+        a {
+            position: relative;
+            display: inline-block;
+            color: transparent;
+
+            &::before,
+            &::after {
+                position: absolute;
+                top: 0;
+                color: @black;
+            }
+
+            &::before {
+                content: 'Стр';
+                left: 0.1em;
+            }
+
+            &::after {
+                content: 'нник';
+                right: 0.1em;
+                padding-left: 0.7em;
+                background: url(../images/logo-icon.png) 0 0 no-repeat;
+            }
+        }
+    }
+
+    .nav-main {
+        text-align: center;
+        text-transform: uppercase;
+
+        & > li {
+            display: inline-block;
+            color: @gray-medium;
+
+            & + li {
+                margin-left: 72px - @whitespace-width;
+            }
+            
+            &.active,
+            a:hover {
+                color: @black;
+            }
+        }
+    }
+
+    .search-form {
+        @form-height: @text-line-height;
+
+        & {
+            position: absolute;
+            left: @content-offset-x;
+            top: @logo-height;
+            height: @form-height;
+        }
+
+        & > * {
+            display: block;
+            float: left;
+            border-width: 0;
+        }
+
+        input {
+            @input-line-height: @form-height; // WebKit placeholder positioning bug
+            @input-pad-top: floor((@form-height - @input-line-height) / 2);
+            @input-pad-bottom: ceil((@form-height - @input-line-height) / 2);
+
+            & {
+                .box-sizing(border-box);
+                width: 55px;
+                height: @form-height;
+                border-bottom: 1px solid transparent;
+                .placeholder-color(@gray-medium);
+                .placeholder-style({
+                    text-transform: uppercase;
+                });
+                font: normal @text-font-size/@input-line-height @font-normal;
+                .transition(all 0.5s);
+            }
+        }
+
+        input:focus,
+        &:hover input {
+            width: 105px;
+            border-bottom-color: @gray-light;
+        }
+
+        button {
+            position: relative;
+            top: -2px; // визуальная корректировка
+            width: 12px;
+            height: @form-height;
+            background: url(../images/search-button.gif) 50% 50% no-repeat;
+            .hide-text();
+        }
+    }
+}
+
+body > .content {
+    position: relative;
+    min-height: 100%;
+    margin: -@header-height @content-offset-x -@footer-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    &::before {
+        height: @header-height;
+    }
+
+    &::after {
+        height: @footer-height;
+    }
+}
+
+body > footer {
+    position: relative;
+    .box-sizing(border-box);
+    height: @footer-height;
+    padding-top: 35px;
+    text-align: center;
+
+    .copyright,
+    .contact {
+        display: block;
+        font-size: 100%;
+        font-style: normal;
+        text-transform: uppercase;
+    }
+}

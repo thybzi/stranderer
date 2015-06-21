@@ -1,0 +1,103 @@
+// Просмотр фотографии в крупном виде {{
+.showcase {
+    @element-gap-y: 12px;
+    @caption-height: 2 * @text-line-height;
+
+    & {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    // Область изображения
+    .image-area {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: @caption-height + @element-gap-y;
+
+        .leaflet-control-attribution {
+            display: none;
+        }
+    }
+
+    // Подпись к изображению
+    figcaption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: @caption-height;
+        overflow: hidden;
+
+        strong {
+            display: block;
+            clear: both;
+            font-weight: normal;
+        }
+
+        address,
+        time {
+            display: block;
+            float: left;
+            color: @gray-medium;
+        }
+
+        address + time::before {
+            content: ', ';
+        }
+    }
+
+
+    // Вариант отображения в теле страницы
+    &:not(.popup) {
+        top: @header-height;
+        bottom: @footer-height;
+        min-height: @map-height-min - (@element-gap-y + @caption-height);
+    }
+
+
+    // Вариант отображения во всплывающем окне
+    &.popup {
+        @showcase-pad-x: @content-offset-x;
+        @showcase-pad-y: 22px;
+        @close-icon-size: 16px;
+
+        & {
+            position: fixed;
+            z-index: @zindex-popup;
+            background-color: fade(@black, 95%);
+        }
+
+        .image-area {
+            left: @showcase-pad-x;
+            right: @showcase-pad-x;
+            top: @close-icon-size + @element-gap-y + @showcase-pad-y;
+            bottom: @caption-height + @element-gap-y + @showcase-pad-y;
+        }
+
+        figcaption {
+            left: @showcase-pad-x;
+            right: @showcase-pad-x;
+            bottom: @showcase-pad-y;
+            color: @gray-light;
+        }
+
+        &::after {
+            content: '×';
+            position: absolute;
+            right: @content-offset-x;
+            top: @showcase-pad-y;
+            height: @close-icon-size;
+            color: @gray-light;
+            font-size: 30px * unit(@close-icon-size / 16);
+            line-height: @close-icon-size;
+            cursor: pointer;
+        }
+    }
+
+}
+// }} Просмотр фотографии в крупном виде

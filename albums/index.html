@@ -1,0 +1,39 @@
+---
+title: Альбомы
+layout: default
+nav_item: albums
+controller: overviews
+---
+{% for album in site.categories %}
+    {% assign album_id = album | first %}
+    {% for album in site.albums %}
+        {% assign current_album_id = album.path | split:"/" | last | split:"." | first %}
+        {% if current_album_id == album_id %}
+            {% assign album_data = album %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+<section class="overview">
+    <header class="cover">
+        <a href="/albums/{{ album_id }}/">
+            {% if album_data.cover %}
+                {% assign cover_filename = album_data.cover %}
+            {% else %}
+                {% assign first_photo = site.categories[album_id] | first %}
+                {% capture cover_filename %}{{ first_photo.filename }}_small.{{ first_photo.fileext }}{% endcapture %}
+            {% endif %}
+            <figure style="background-image: url({{ site.data.settings.storage }}{{ cover_filename }})"></figure>
+            <header>
+                <strong>{{ album_data.title }}</strong>
+                {% if album_data.location %}<address>{{ album_data.location }}</address>{% endif %}
+                {% if album_data.date %}<time>{{ album_data.date }}</time>{% endif %}
+            </header>
+        </a>
+    </header>
+    <div class="gallery compact">
+    {% for photo in site.categories[album_id] %}
+        {% include gallery/item.html photo=photo %}
+    {% endfor %}
+    </div>
+</section>
+{% endfor %}

@@ -1,0 +1,13 @@
+---
+title: Избранное
+layout: default
+nav_item: favorites
+controller: index
+---
+<section class="gallery">
+{% for photo in site.posts %}
+    {% if photo.favorite %}
+        {% include gallery/item.html photo=photo %}
+    {% endif %}
+{% endfor %}
+</section>

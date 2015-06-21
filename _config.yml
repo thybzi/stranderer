@@ -1,0 +1,36 @@
+collections:
+  albums:
+    output: true
+    permalink: /albums/:path/
+  years:
+    output: true
+    permalink: /years/:path/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: years
+    values:
+      layout: "year"
+      controller: "overviews"
+  -
+    scope:
+      path: ""
+      type: albums
+    values:
+      layout: "album"
+      controller: "overviews"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "photo"
+      category: "others"
+      no_showcase_popup: true
+      width_units: 1
+      height_units: 1
+      fileext: "jpg"
+
+permalink: /albums/:categories/:title/

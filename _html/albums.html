@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <link rel="stylesheet" href="../scripts/vendor/leaflet/leaflet.css">
+    <script src="../scripts/vendor/leaflet/leaflet-src.js"></script>
+    <script src="../scripts/vendor/L.TileLayer.Zoomify.js"></script>
+    <!--<script src="scripts/vendor/masonry.pkgd.js"></script>-->
+
+    <script src="../scripts/app.js"></script>
+    <script>
+        strad.pageOverviews();
+    </script>
+</head>
+<body>
+
+<header>
+    <h1 class="logo">
+        <a href="index.html">Странник</a>
+    </h1>
+    <form class="search-form">
+        <input type="search" name="search" placeholder="Поиск">
+        <button type="submit">Искать</button>
+    </form>
+    <ul class="nav-main">
+        <li><a href="index.html">Избранное</a></li>
+        <li><a href="#">На карте</a></li>
+        <li><a href="years.html">По годам</a></li>
+        <li class="active"><a href="albums.html">Альбомы</a></li>
+    </ul>
+</header>
+
+<article class="content">
+
+    <section class="overview">
+        <header class="cover">
+            <a href="#">
+                <figure style="background-image: url(files/_pic2.jpg)"></figure>
+                <header>
+                    <strong>Всякие красивости</strong>
+                    <address>Москва</address>
+                    <time>август 1989</time>
+                </header>
+            </a>
+        </header>
+        <div class="gallery compact">
+            <article class="w3u h1u">
+                <a href="photo.html" data-width="11793" data-height="2610" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_0301-0311_hf/">
+                    <figure style="background-image: url(files/_pic1.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="photo.html" data-width="4850" data-height="1717" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_7210-7212_hf/">
+                    <figure style="background-image: url(files/_pic2.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic3.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>Николо-Урюпино</address>
+                        <time>сентябрь 1999</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic4.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic5.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h3u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic6.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="photo.html" data-width="2365" data-height="5130" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_7826-7828_hf/">
+                    <figure style="background-image: url(files/_pic7.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>1 км на север от Николо-Урюпина</address>
+                        <time>середина—конец августа 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic8.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic9.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic10.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic11.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic12.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h3u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic6.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="photo.html" data-width="4850" data-height="1717" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_7210-7212_hf/">
+                    <figure style="background-image: url(files/_pic2.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="photo.html" data-width="2365" data-height="5130" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_7826-7828_hf/">
+                    <figure style="background-image: url(files/_pic7.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>1 км на север от Николо-Урюпина</address>
+                        <time>середина—конец августа 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic3.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>Николо-Урюпино</address>
+                        <time>сентябрь 1999</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w3u h1u">
+                <a href="photo.html" data-width="11793" data-height="2610" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_0301-0311_hf/">
+                    <figure style="background-image: url(files/_pic1.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic4.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic5.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic8.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic9.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic10.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic11.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic12.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="overview">
+        <header class="cover">
+            <a href="#">
+                <figure style="background-image: url(files/_pic8.jpg)"></figure>
+                <header>
+                    <strong>Эти милые звери</strong>
+                    <address>Россия, Беларусь, Франция</address>
+                    <time>август 1993 — сентябрь 2012</time>
+                </header>
+            </a>
+        </header>
+        <div class="gallery compact">
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic5.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic2.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="photo.html" data-width="2365" data-height="5130" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_7826-7828_hf/">
+                    <figure style="background-image: url(files/_pic7.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>1 км на север от Николо-Урюпина</address>
+                        <time>середина—конец августа 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic3.jpg)"></figure>
+                    <header>
+                        <strong>Какая-то красивая штука</strong>
+                        <address>Николо-Урюпино</address>
+                        <time>сентябрь 1999</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w3u h1u">
+                <a href="photo.html" data-width="11793" data-height="2610" data-tiles="https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_0301-0311_hf/">
+                    <figure style="background-image: url(files/_pic1.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic4.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h3u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic6.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic8.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic9.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h2u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic10.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w2u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic11.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+            <article class="w1u h1u">
+                <a href="#">
+                    <figure style="background-image: url(files/_pic12.jpg)"></figure>
+                    <header>
+                        <strong>Красивая штука</strong>
+                        <address>Москва</address>
+                        <time>август 1989</time>
+                    </header>
+                </a>
+            </article>
+        </div>
+    </section>
+
+</article>
+
+<footer>
+    <small class="copyright">© 2013</small>
+    <address class="contact"><a href="mailto:alex@stranderer.ru">alex@stranderer.ru</a></address>
+</footer>
+
+<figure class="showcase popup" style="display: none;">
+    <span class="image-area"></span>
+    <figcaption></figcaption>
+</figure>
+
+</body>
+</html>

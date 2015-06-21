@@ -1,0 +1,63 @@
+// Предварительное отображение группы фотографий {{
+.overview {
+    @year-block-width: 120px;
+    @year-block-height: 40px;
+    @year-block-space-x: @year-block-width + @gallery-normal-unit-gap;
+    @cover-width-unit-count: 2;
+    @cover-height-unit-count: 2;
+
+    position: relative;
+    .clearfix();
+
+    & > .year {
+        width: @year-block-width;
+        height: @year-block-height;
+        margin-bottom: @gallery-compact-unit-gap;
+        font-weight: 300;
+        font-size: 50px;
+        line-height: @year-block-height;
+
+        & + .gallery.compact {
+            margin-left: @year-block-space-x;
+            min-height: @year-block-height + @gallery-compact-unit-gap;
+        }
+    }
+
+    & > .cover {
+        &:extend(.gallery > article all);
+        &:extend(.gallery:not(.compact) > article);
+        .gallery > .unit-based-size(width, @cover-width-unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap);
+        .gallery > .unit-based-size(height, @cover-height-unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap);
+
+        & > a {
+            &:extend(.gallery:not(.compact) > article > a all);
+            &:extend(.gallery:not(.compact) > article:not(.h1u) > a all);
+            &:extend(.gallery:not(.compact) > article > a:hover all);
+        }
+
+        & + .gallery.compact {
+            .gallery > .unit-based-size(min-height, @cover-width-unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap, @gallery-compact-unit-gap);
+            .gallery > .unit-based-size(margin-left, @cover-height-unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap, @gallery-normal-unit-gap);
+        }
+    }
+
+    & > .year,
+    & > .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    & > .gallery.compact {
+        margin-bottom: 0;
+    }
+
+    & + & {
+        margin-top: 80px - @gallery-compact-unit-gap;
+    }
+
+    &:last-child {
+        margin-bottom: -@gallery-compact-unit-gap;
+    }
+}
+// }} Предварительное отображение группы фотографий

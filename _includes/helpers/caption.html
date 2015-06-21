@@ -1,0 +1,20 @@
+<strong>{{ include.photo.title }}</strong>
+{% if include.photo.location %}<address>{{ include.photo.location }}</address>{% endif %}
+<time>{% capture devnull %}
+    {% assign month_number = include.photo.date | date: "%-m" %}
+    {% case month_number %}
+        {% when '1' %}{% assign month_name = "января" %}
+        {% when '2' %}{% assign month_name = "февраля" %}
+        {% when '3' %}{% assign month_name = "марта" %}
+        {% when '4' %}{% assign month_name = "апреля" %}
+        {% when '5' %}{% assign month_name = "мая" %}
+        {% when '6' %}{% assign month_name = "июня" %}
+        {% when '7' %}{% assign month_name = "июля" %}
+        {% when '8' %}{% assign month_name = "августа" %}
+        {% when '9' %}{% assign month_name = "сентября" %}
+        {% when '10' %}{% assign month_name = "октября" %}
+        {% when '11' %}{% assign month_name = "ноября" %}
+        {% when '12' %}{% assign month_name = "декабря" %}
+    {% endcase %}
+{% endcapture %}{{ include.photo.date | date: "%-d" }} {{ month_name }} {{ include.photo.date | date: "%Y" }}</time>
+

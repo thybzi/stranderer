@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <link rel="stylesheet" href="../scripts/vendor/leaflet/leaflet.css">
+    <script src="../scripts/vendor/leaflet/leaflet-src.js"></script>
+    <script src="../scripts/vendor/L.TileLayer.Zoomify.js"></script>
+    <script src="../scripts/vendor/masonry.pkgd.js"></script>
+
+    <script src="../scripts/app.js"></script>
+</head>
+<body>
+
+<header>
+    <h1 class="logo">
+        <a href="index.html">Странник</a>
+    </h1>
+    <form class="search-form">
+        <input type="search" name="search" placeholder="Поиск">
+        <button type="submit">Искать</button>
+    </form>
+    <ul class="nav-main">
+        <li><a href="index.html">Избранное</a></li>
+        <li><a href="#">На карте</a></li>
+        <li><a href="years.html">По годам</a></li>
+        <li><a href="albums.html">Альбомы</a></li>
+    </ul>
+</header>
+
+<article class="content">
+    <figure class="showcase">
+        <span class="image-area"></span>
+        <figcaption>
+            <strong>Красивая штука</strong>
+            <address>Москва</address>
+            <time>август 1989</time>
+        </figcaption>
+    </figure>
+    <script>
+        strad.makeShowcase('https://dl.dropboxusercontent.com/u/36258212/files/stranderer/HG_0301-0311_hf/', 11793, 2610);
+    </script>
+</article>
+
+
+<footer>
+    <small class="copyright">© 2013</small>
+    <address class="contact"><a href="mailto:alex@stranderer.ru">alex@stranderer.ru</a></address>
+</footer>
+
+</body>
+</html>

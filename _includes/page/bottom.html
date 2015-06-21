@@ -1,0 +1,18 @@
+</article>
+
+<footer>
+    <small class="copyright">{% assign first_year = site.years | first %}
+        © {{ first_year.path | split:"/" | last | split:"." | first }}—{{ site.time | date: "%Y" }}
+    </small>
+    <address class="contact"><a href="mailto:alex@stranderer.ru">alex@stranderer.ru</a></address>
+</footer>
+
+{% unless page.no_showcase_popup %}
+<figure class="showcase popup" style="display: none;">
+    <span class="image-area"></span>
+    <figcaption></figcaption>
+</figure>
+{% endunless %}
+
+</body>
+</html>

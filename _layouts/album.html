@@ -1,0 +1,17 @@
+{% capture devnull %}
+    {% assign album_id = page.path | split:"/" | last | split:"." | first %}
+    {% for album in site.albums %}
+        {% assign current_album_id = album.path | split:"/" | last | split:"." | first %}
+        {% if current_album_id == album_id %}
+            {% assign album_data = album %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% capture page_extra_title %}Альбомы | {{ album_data.title }}{% endcapture %}
+{% endcapture %}{% include page/top.html page_extra_title=page_extra_title %}
+<section class="gallery">
+{% for photo in site.categories[album_id] %}
+    {% include gallery/item.html photo=photo %}
+{% endfor %}
+</section>
+{% include page/bottom.html %}

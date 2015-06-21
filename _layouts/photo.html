@@ -1,0 +1,21 @@
+{% capture devnull %}
+    {% assign album_id = page.category %}
+    {% for album in site.albums %}
+        {% assign current_album_id = album.path | split:"/" | last | split:"." | first %}
+        {% if current_album_id == album_id %}
+            {% assign album_data = album %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% capture page_extra_title %}Альбомы | {{ album_data.title }}{% endcapture %}
+{% endcapture %}{% include page/top.html page_extra_title=page_extra_title %}
+<figure class="showcase">
+    <span class="image-area"></span>
+    <figcaption>
+        {% include helpers/caption.html photo=page %}
+    </figcaption>
+    <script>
+        strad.makeShowcase('{{ site.data.settings.storage }}{{ page.filename }}/', {{ page.width }}, {{ page.height }});
+    </script>
+</figure>
+{% include page/bottom.html %}

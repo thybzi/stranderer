@@ -1,0 +1,23 @@
+@map-height-min: 400px;
+
+// Карта расположения фотографий {{
+.map {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: @header-height;
+    bottom: @footer-height;
+    min-height: 400px;
+
+    .leaflet-popup-content {
+
+        & > * {
+            display: block;
+        }
+    }
+
+    .leaflet-control-attribution {
+        display: none;
+    }
+}
+// }} Карта расположения фотографий

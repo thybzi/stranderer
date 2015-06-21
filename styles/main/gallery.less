@@ -1,0 +1,182 @@
+// Галерея {{
+@gallery-normal-unit-size: 150px;
+@gallery-normal-unit-gap: 30px;
+@gallery-compact-unit-size: 91px;
+@gallery-compact-unit-gap: 10px;
+@gallery-width-unit-count-max: 3;
+@gallery-height-unit-count-max: 2;
+
+.gallery {
+    .clearfix();
+
+    & > article {
+        position: relative;
+        float: left;
+
+        & > a {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            & > figure {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: cover;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    border: 1px solid fade(@gray-light, 50%);
+                }
+            }
+        }
+    }
+
+    // Обычный вариант галереи
+    &:not(.compact) {
+        margin-right: -@gallery-normal-unit-gap;
+        margin-bottom: -@gallery-normal-unit-gap;
+
+        & > article {
+            margin-right: @gallery-normal-unit-gap;
+            margin-bottom: @gallery-normal-unit-gap;
+
+            & > a > header {
+                @caption-size: @gallery-normal-unit-size - (2 * @caption-offset);
+                @caption-offset: 14px;
+                @caption-pad-x: 12px;
+                @caption-pad-y: floor((@caption-size - @caption-content-height-max) / 2);
+                @caption-title-offset-bottom: 12px;
+                @caption-title-line-count: 2;
+                @caption-location-line-count: 1;
+                @caption-date-line-count: 1;
+                @caption-content-height-max: @caption-title-offset-bottom +
+                    (@text-line-height * (@caption-title-line-count + @caption-location-line-count + @caption-date-line-count));
+
+                & {
+                    position: absolute;
+                    top: @caption-offset;
+                    left: 50%;
+                    .box-sizing(border-box);
+                    width: @caption-size;
+                    height: @caption-size;
+                    overflow: hidden;
+                    margin-left: -(round(@caption-size / 2));
+                    padding: @caption-pad-y @caption-pad-x;
+                    text-align: center;
+                    background-color: fade(@white, 95%);
+                    opacity: 0;
+                    .transition(opacity 0.25s);
+                }
+
+                &::before {
+                    &:extend(.gallery > article > a > figure::before);
+                }
+
+                & > * {
+                    display: block;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                & > strong {
+                    font-weight: normal;
+                    text-transform: uppercase;
+                    max-height: @caption-title-line-count * @text-line-height;
+
+                    & + * {
+                        margin-top: @caption-title-offset-bottom;
+                    }
+                }
+
+                & > address {
+                    max-height: @caption-location-line-count * @text-line-height;
+                }
+
+                & > time {
+                    max-height: @caption-date-line-count * @text-line-height;
+                    color: @gray-medium;
+                }
+            }
+
+            & > a:hover > header {
+                opacity: 1;
+            }
+
+            .width-variations(@gallery-width-unit-count-max);
+            .height-variations(@gallery-height-unit-count-max);
+
+            &:not(.h1u) > a > header {
+                height: 166px;
+
+                & > address,
+                & > time {
+                    max-height: 2 * @text-line-height;
+                }
+            }
+        }
+
+        .width-variations(@unit-count) when (@unit-count >= 1) {
+            .width-variations(@unit-count - 1);
+            &.w@{unit-count}u {
+                .unit-based-size(width, @unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap);
+            }
+        }
+
+        .height-variations(@unit-count) when (@unit-count >= 1) {
+            .height-variations(@unit-count - 1);
+            &.h@{unit-count}u {
+                .unit-based-size(height, @unit-count, @gallery-normal-unit-size, @gallery-normal-unit-gap);
+            }
+        }
+    }
+
+    // Компактный вариант галереи
+    &.compact {
+        margin-right: -@gallery-compact-unit-gap;
+        margin-bottom: -@gallery-compact-unit-gap;
+
+        & > article {
+            margin-right: @gallery-compact-unit-gap;
+            margin-bottom: @gallery-compact-unit-gap;
+            height: @gallery-compact-unit-size;
+            .size-combinations(@gallery-width-unit-count-max, @gallery-height-unit-count-max);
+
+            & > a > header {
+                display: none;
+            }
+        }
+
+        .size-combinations(@width-unit-count, @height-unit-count) when (@width-unit-count > 0) and (@height-unit-count > 0) {
+            .size-combinations(@width-unit-count, @height-unit-count - 1);
+            &.w@{width-unit-count}u.h@{height-unit-count}u {
+                .unit-based-size(width, (@width-unit-count / @height-unit-count), @gallery-compact-unit-size, @gallery-compact-unit-gap);
+            }
+            .size-combinations(@width-unit-count - 1, @height-unit-count);
+        }
+    }
+
+
+    .unit-based-size(@property, @unit-count, @unit-size, @unit-gap, @augment-by: null) {
+        @value: round((@unit-count * @unit-size) + ((@unit-count - 1) * @unit-gap));
+        & when (isnumber(@augment-by)) {
+            @{property}: @value + @augment-by;
+        }
+        & when not (isnumber(@augment-by)) {
+            @{property}: @value;
+        }
+
+    }
+}
+// }} Галерея

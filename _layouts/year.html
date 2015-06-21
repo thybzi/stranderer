@@ -1,0 +1,13 @@
+{% capture devnull %}
+    {% assign year = page.path | split:"/" | last | split:"." | first %}
+    {% capture page_extra_title %}По годам | {{ year }}{% endcapture %}
+{% endcapture %}{% include page/top.html page_extra_title=page_extra_title %}
+<section class="gallery">
+{% for photo in site.posts %}
+    {% assign photo_year = photo.date | date:"%Y" %}
+    {% if photo_year == year %}
+        {% include gallery/item.html photo=photo %}
+    {% endif %}
+{% endfor %}
+</section>
+{% include page/bottom.html %}
