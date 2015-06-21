@@ -5,7 +5,7 @@
     {
         "title": "{{ photo.title | escape }}",
         "description": "{{ photo.description | escape }}",
-        "url": "{{ photo.url }}",
+        "url": "{{ site.baseurl }}{{ photo.url }}",
         "width": {{ photo.width }},
         "height": {{ photo.height }},
         "width_units": {{ photo.width_units }},

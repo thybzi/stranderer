@@ -34,3 +34,4 @@ defaults:
       fileext: "jpg"
 
 permalink: /albums/:categories/:title/
+baseurl: /stranderer

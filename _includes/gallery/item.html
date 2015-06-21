@@ -1,5 +1,5 @@
 <article class="w{{ include.photo.width_units }}u h{{ include.photo.height_units }}u">
-    <a href="{{ include.photo.url }}" data-width="{{ include.photo.width }}" data-height="{{ include.photo.height }}" data-tiles="{{ site.data.settings.storage }}{{ include.photo.filename }}/">
+    <a href="{{ site.baseurl }}{{ include.photo.url }}" data-width="{{ include.photo.width }}" data-height="{{ include.photo.height }}" data-tiles="{{ site.data.settings.storage }}{{ include.photo.filename }}/">
         <figure style="background-image: url({{ site.data.settings.storage }}{{ include.photo.filename }}_small.{{ include.photo.fileext }})"></figure>
         <header>
             {% include helpers/caption.html photo=include.photo %}

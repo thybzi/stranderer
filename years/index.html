@@ -13,7 +13,7 @@ controller: overviews
         {% endunless %}
             <section class="overview">
                 <header class="year">
-                    <a href="/years/{{ currentyear }}/"><time>{{ currentyear }}</time></a>
+                    <a href="{{ site.baseurl }}/years/{{ currentyear }}/"><time>{{ currentyear }}</time></a>
                 </header>
                 <div class="gallery compact">
         {% assign year = currentyear %}

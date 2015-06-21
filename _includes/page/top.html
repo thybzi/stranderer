@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <title>Странник{% if page_extra_title %} | {{ page_extra_title }}{% endif %}{% if page.title %} | {{ page.title }}{% endif %}</title>
 
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/scripts/vendor/leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/scripts/vendor/leaflet/leaflet.css">
 
-    <script src="/scripts/vendor/leaflet/leaflet.js"></script>
-    <script src="/scripts/vendor/L.TileLayer.Zoomify.js"></script>
-    <script src="/scripts/vendor/Yandex.js"></script>
+    <script src="{{ site.baseurl }}/scripts/vendor/leaflet/leaflet.js"></script>
+    <script src="{{ site.baseurl }}/scripts/vendor/L.TileLayer.Zoomify.js"></script>
+    <script src="{{ site.baseurl }}/scripts/vendor/Yandex.js"></script>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.map&lang=ru-RU"></script>
-    <script src="/scripts/vendor/masonry.pkgd.min.js"></script>
-    <script src="/scripts/app.js"></script>
+    <script src="{{ site.baseurl }}/scripts/vendor/masonry.pkgd.min.js"></script>
+    <script src="{{ site.baseurl }}/scripts/app.js"></script>
 {% if page.controller %}
     <script>
         strad.page{{ page.controller | capitalize }}();
@@ -23,17 +23,17 @@
 
 <header>
     <h1 class="logo">
-        <a href="/">Странник</a>
+        <a href="{{ site.baseurl }}/">Странник</a>
     </h1>
-    <form class="search-form" action="/search/" method="get">
+    <form class="search-form" action="{{ site.baseurl }}/search/" method="get">
         <input type="search" name="q" placeholder="Поиск">
         <button type="submit">Искать</button>
     </form>
     <ul class="nav-main">
-        <li{% if page.nav_item == 'favorites' %} class="active"{% endif %}><a href="/">Избранное</a></li>
-        <li{% if page.nav_item == 'map' %} class="active"{% endif %}><a href="/map/">На карте</a></li>
-        <li{% if page.nav_item == 'years' %} class="active"{% endif %}><a href="/years/">По годам</a></li>
-        <li{% if page.nav_item == 'albums' %} class="active"{% endif %}><a href="/albums/">Альбомы</a></li>
+        <li{% if page.nav_item == 'favorites' %} class="active"{% endif %}><a href="{{ site.baseurl }}/">Избранное</a></li>
+        <li{% if page.nav_item == 'map' %} class="active"{% endif %}><a href="{{ site.baseurl }}/map/">На карте</a></li>
+        <li{% if page.nav_item == 'years' %} class="active"{% endif %}><a href="{{ site.baseurl }}/years/">По годам</a></li>
+        <li{% if page.nav_item == 'albums' %} class="active"{% endif %}><a href="{{ site.baseurl }}/albums/">Альбомы</a></li>
     </ul>
 </header>
 

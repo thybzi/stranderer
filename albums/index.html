@@ -15,7 +15,7 @@ controller: overviews
     {% endfor %}
 <section class="overview">
     <header class="cover">
-        <a href="/albums/{{ album_id }}/">
+        <a href="{{ site.baseurl }}/albums/{{ album_id }}/">
             {% if album_data.cover %}
                 {% assign cover_filename = album_data.cover %}
             {% else %}
