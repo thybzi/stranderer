@@ -12,7 +12,7 @@
         "height_units": {{ photo.height_units }},
         "tiles": "{{ site.data.settings.storage }}{{ photo.filename }}/",
         "thumbnail": "{{ site.data.settings.storage }}{{ photo.filename }}_small.{{ photo.fileext }}",
-        "caption": {% capture caption %}{% include helpers/caption.html photo=photo %}{% endcapture %}"{{ caption | replace:"\"","&quot;" | strip_newlines }}"
+        "caption": {% capture caption %}{% include helpers/caption.html photo=photo %}{% endcapture %}"{{ caption | replace:'"',"&quot;" | strip_newlines }}"
     }{% unless forloop.last %},
 {% endunless %}
 {% endfor %}
