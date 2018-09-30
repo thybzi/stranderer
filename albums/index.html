@@ -26,7 +26,7 @@ controller: overviews
             <header>
                 <strong>{{ album_data.title }}</strong>
                 {% if album_data.location %}<address>{{ album_data.location }}</address>{% endif %}
-                {% if album_data.date %}<time>{{ album_data.date }}</time>{% endif %}
+                {% if album_data.datestr %}<time>{{ album_data.datestr }}</time>{% endif %}
             </header>
         </a>
     </header>
